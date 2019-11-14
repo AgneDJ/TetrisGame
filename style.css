@@ -6,10 +6,7 @@
     background-color: black;
 }           
 .gameScreen {
-    height: 600px;
-    width: 400px;
     border: 2px solid grey;
-
 }
 
 .grid {
@@ -18,7 +15,6 @@
         repeating-linear-gradient(-90deg, transparent, transparent 32.5px, darkgrey 32.5px, #CCC 33.5px);
     background-size: 33.5px 33.5px;
     margin: 50px 550px 50px 50px;
-    
 }
 
 #logo {
