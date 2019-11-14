@@ -1,9 +1,11 @@
+import Brick from './brick';
+import InputHandler from './input';
 
 
-let canvas = document.getElementsByClassName("gameScreen")[0];
-let ctx = canvas.getContext("2d");
-
+let kenvesas = document.getElementsByClassName("gameScreen")[0];
+let kontekstas = kenvesas.getContext("2d");
 let zemelapis = [];
+
 
 for (let row = 0; row < 18; row++ ) {
     let eilute = []; 
@@ -15,17 +17,20 @@ for (let row = 0; row < 18; row++ ) {
 }
 console.log(zemelapis);
 
-zemelapis[5][6] = 1;
-zemelapis[6][6] = 1;
+new Brick(zemelapis, 6, 10);
+let brick = new Brick(zemelapis, 5, 6);
+
+new InputHandler(brick);
 
 
 function gameLoop(timestamp) {
+   kontekstas.clearRect(0, 0, 600, 400);
     for (let row = 0; row < 18; row++ ) { 
         for (let column = 0; column < 12; column++) {
-            if (zemelapis[row][column]!=null) {
-                ctx.fillStyle = "#f00";
-                ctx.fillRect(column * 33.5,row * 33.5, 30, 30);
-                
+            if (zemelapis[row][column] != null) {
+                let brick = zemelapis[row][column];
+                brick.draw(kontekstas);
+
             }
         }
     }
