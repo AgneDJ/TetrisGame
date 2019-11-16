@@ -2,6 +2,7 @@ export default class Brick {
     constructor(zemelapis, x, y) {
         this.map = zemelapis;
         this.map[y][x] = this;
+    
 
         this.position = {
             x: x,
@@ -22,7 +23,11 @@ export default class Brick {
     moveLeft() {
         this.map[this.position.y][this.position.x] = null;
 
-        this.position.x = this.position.x - 1;
+        if (this.position.x <= 0) {
+            this.position.x = 0;
+        } else {
+            this.position.x = this.position.x - 1;
+        }
 
         this.map[this.position.y][this.position.x] = this;
     }
@@ -30,26 +35,51 @@ export default class Brick {
     moveRight() {
         this.map[this.position.y][this.position.x] = null;
 
-        this.position.x = this.position.x + 1;
-
-        this.map[this.position.y][this.position.x] = this;
+        if (this.position.x >= 11) {
+            this.position.x = 11;
+        } else {
+            this.position.x = this.position.x + 1;
+        } 
+    
+        this.map[this.position.y][this.position.x] = this; 
     }
 
     moveUp() {
         this.map[this.position.y][this.position.x] = null;
 
+        if (this.position.y <= 0) {
+            this.position.y = 0
+        } else {
         this.position.y = this.position.y - 1;
+        }
 
         this.map[this.position.y][this.position.x] = this;
+        
     }
 
       moveDown() {
         this.map[this.position.y][this.position.x] = null;
 
+        if (this.position.y >= 17) {
+            this.position.y = 17 
+        } else {
         this.position.y = this.position.y + 1;
+        }
 
         this.map[this.position.y][this.position.x] = this;
     }
+
+        // autoMove() {
+        //     this.map[this.position.y][this.position.x] = null;
+
+        //     if (this.position.y >= 17) {
+        //         this.position.y = 17 
+        //     } else {
+        //         this.position.y = this.position.y + 1;
+        //     }
+
+        //     this.map[this.position.y][this.position.x] = this;
+        // }
 }
 
 
